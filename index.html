@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Portfolio | Final-Year Student</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8WcA9Y4jv9yQv0zQ5k5S5B5H3Q0z5xg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --deep-navy: #0d1b2a;
+      --slate: #334155;
+      --charcoal: #1f2937;
+      --ink: #111827;
+      --muted: #6b7280;
+      --light-bg: #f8fafc;
+      --card-bg: #ffffff;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --success: #0f766e;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 14px;
+      --container: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--charcoal);
+      background: linear-gradient(180deg, #f8fbff 0%, #f8fafc 100%);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 5.5rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--deep-navy);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.2px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 2rem;
+    }
+
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      background: rgba(13, 27, 42, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(13, 27, 42, 0.82);
+      padding: 0.1rem 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      transition: min-height 0.3s ease;
+    }
+
+    header.scrolled .nav-wrap {
+      min-height: 60px;
+    }
+
+    .brand {
+      color: #f8fafc;
+      font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: #93c5fd;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: #e2e8f0;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 8px;
+      transition: 0.25s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffffff;
+      background: rgba(148, 163, 184, 0.18);
+    }
+
+    .nav-cv-btn {
+      margin-left: 0.6rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.48rem 0.8rem;
+      border-radius: 9px;
+      border: 1px solid rgba(219, 234, 254, 0.45);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-cv-btn:hover {
+      transform: translateY(-1px);
+      background: #1d4ed8;
+    }
+
+    #about {
+      padding-top: 8.5rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+
+    .hero-kicker {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.78rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-name {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.2;
+      color: var(--deep-navy);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-bio {
+      color: var(--slate);
+      margin-bottom: 1.4rem;
+    }
+
+    .focus-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.9rem;
+    }
+
+    .focus-pill {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #1e3a8a;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.4rem 0.72rem;
+      border-radius: 999px;
+    }
+
+    .cta-row {
+      margin-top: 1.45rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: #cbd5e1;
+      color: var(--slate);
+      background: #fff;
+    }
+
+    .btn-outline:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
+
+    .profile-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .profile-card,
+    .skills-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+    }
+
+    .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(130px, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.8rem;
+    }
+
+    .skill-chip {
+      background: #f8fafc;
+      border: 1px solid #dbe3ee;
+      color: #334155;
+      padding: 0.5rem 0.65rem;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .tabs {
+      display: inline-flex;
+      background: #edf2f7;
+      border-radius: 999px;
+      padding: 0.3rem;
+      margin-bottom: 1.4rem;
+      border: 1px solid #e2e8f0;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--slate);
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: #fff;
+      color: var(--deep-navy);
+      box-shadow: 0 4px 10px rgba(2, 6, 23, 0.08);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 330px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+      background: #fdfefe;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 150px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 0.8rem;
+      background: #eef2ff;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-title {
+      font-size: 1.02rem;
+      color: var(--deep-navy);
+      font-weight: 700;
+    }
+
+    .github-link {
+      color: #334155;
+      font-size: 1.05rem;
+      padding: 0.3rem;
+      border-radius: 8px;
+    }
+
+    .github-link:hover {
+      color: var(--accent);
+      background: #eff6ff;
+    }
+
+    .project-desc {
+      color: var(--slate);
+      font-size: 0.92rem;
+      margin-bottom: 0.85rem;
+      flex-grow: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: 0.28rem 0.58rem;
+      color: #374151;
+      background: #f9fafb;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 2rem;
+      padding-left: 1.2rem;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0.3rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #cbd5e1;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 1.2rem 1rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -0.15rem;
+      top: 0.3rem;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px #dbeafe;
+    }
+
+    .timeline h4 {
+      color: var(--deep-navy);
+      font-size: 1rem;
+      margin-bottom: 0.18rem;
+    }
+
+    .timeline small {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .timeline p {
+      color: var(--slate);
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .social-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      transition: 0.25s ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: #bfdbfe;
+    }
+
+    .social-card i {
+      font-size: 1.4rem;
+      color: var(--deep-navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .social-card h4 {
+      color: var(--deep-navy);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .social-card p {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .contact-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.4rem;
+      color: var(--slate);
+      margin-top: 0.7rem;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 1.2rem 0 2rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .social-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: 0.6rem 0;
+      }
+
+      nav ul {
+        justify-content: flex-start;
+        gap: 0.45rem;
+      }
+
+      #about {
+        padding-top: 10.5rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="#about" class="brand">Sabbir Ahmed <span>· Portfolio</span></a>
+
+      <nav>
+        <ul>
+          <li><a href="#about" class="nav-link active">About</a></li>
+          <li><a href="#work" class="nav-link">Projects</a></li>
+          <li><a href="#research" class="nav-link">Research</a></li>
+          <li><a href="#socials" class="nav-link">Socials</a></li>
+          <li><a href="#contact" class="nav-link">Contact/CV</a></li>
+          <li><a class="nav-cv-btn" href="cv.pdf" download><i class="fa-solid fa-file-arrow-down"></i> CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="container hero-grid">
+        <article class="hero-card reveal">
+          <p class="hero-kicker">Academic Portfolio</p>
+          <h1 class="hero-name">Hi, I’m Sabbir Ahmed - A Research Oriented Electrical and Electronic Engineer</h1>
+          <p class="hero-bio">
+            A final-year engineering student at the Bangladesh University of Engineering and Technology, I am dedicated to addressing complex, real-world challenges through the integration of Artificial Intelligence, Deep Learning, and Advanced Simulation. My research and project work focus on bridging the gap between academic theory and practical implementation, specifically within the realms of AI and ML, Data Science, Robotics, Automation, and the Internet of Things (IoT). By leveraging data-driven modeling and modern software architectures, I specialize in engineering intelligent, signal-driven systems designed to optimize performance and solve intricate scientific problems.
+          </p>
+
+          <h3 class="section-title" style="font-size:1.15rem; margin-bottom:0.3rem;">Research Focus</h3>
+          <div class="focus-wrap">
+            <span class="focus-pill">Deep Learning</span>
+            <span class="focus-pill">Machine Learning</span>
+            <span class="focus-pill">IoT</span>
+            <span class="focus-pill">Robotics and Automation</span>
+            <span class="focus-pill">Differential Privacy</span>
+            <span class="focus-pill">Signal Processing</span>
+            <span class="focus-pill">Data Science</span>
+            <span class="focus-pill">Embedded Systems</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="cv.pdf" download>
+              <i class="fa-solid fa-file-arrow-down"></i> Download CV
+            </a>
+            <a class="btn btn-outline" href="#work">
+              <i class="fa-solid fa-diagram-project"></i> View Projects
+            </a>
+          </div>
+        </article>
+
+        <aside class="profile-aside">
+          <div class="profile-card reveal">
+            <div class="avatar"><img src="profile.jpg"></div>
+            <h3 style="color:var(--deep-navy); margin-bottom:0.2rem; text-align:center;">Sabbir Ahmed</h3>
+            <p class="meta" style="text-align:center;">Final-Year Student<br>Bangladesh University of Engineering and Technology (BUET)</p>
+            <p class="meta" style="text-align:center;">Dept. of Electrical and Electronic Engineering</p>
+          </div>
+
+          <div class="skills-card reveal">
+            <h3 style="color:var(--deep-navy); font-size:1.05rem;">Technical Skills</h3>
+            <div class="skills-grid">
+              <div class="skill-chip">Python</div>
+              <div class="skill-chip">C/C++</div>
+              <div class="skill-chip">PyTorch</div>
+              <div class="skill-chip">TensorFlow</div>
+              <div class="skill-chip">OpenCV</div>
+              <div class="skill-chip">Keras</div>
+              <div class="skill-chip">Embedded Systems</div>
+              <div class="skill-chip">ROS</div>
+              <div class="skill-chip">MATLAB</div>
+              <div class="skill-chip">HTML/CSS/JS</div>
+              <div class="skill-chip">Blender/AutoCAD</div>
+              <div class="skill-chip">Godot/Unreal Engine</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="work" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Projects & Other Work</h2>
+        <p class="section-subtitle reveal">
+          All of my academic and engineering works. Click on the Project Title to go to the GitHub Repository.
+        </p>
+
+        <div class="tabs reveal" role="tablist" aria-label="Project tabs">
+          <button class="tab-btn active" data-tab="projects" role="tab" aria-selected="true">Projects</button>
+          <button class="tab-btn" data-tab="other" role="tab" aria-selected="false">Other Work</button>
+        </div>
+
+        <div id="projects" class="tab-panel active" role="tabpanel">
+  <div class="projects-grid">
+    <article class="project-card reveal">
+      <img class="project-image" src="IoT-Health-Monitor.jpg" alt="IoT Based Remote Patient Health Monitoring System">
+      <div class="project-top">
+        <h3 class="project-title">
+          <a href="https://github.com/SabbirWitcher/IoT-Based-Patient-Health-Monitoring-System" target="_blank" style="text-decoration: none; color: inherit;">
+            IoT Based Remote Patient Health Monitoring System
+          </a>
+        </h3>
+        <a class="github-link" href="https://github.com/SabbirWitcher/IoT-Based-Patient-Health-Monitoring-System" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <p class="project-desc">
+        This is an IoT Based automated patient health monitoring system using ESP32 microcontroller and sensors. The sensors track vital signs and then generate alerts and notifications to send over the internet to the medical officers and family to alert about someone's health. While an continuous ECG is being monitored by a trained classifier to identify any severe heart disease using Machine Learning.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">IoT</span><span class="tag">AI/ML</span><span class="tag">Embedded Systems</span><span class="tag">TensorFlow</span><span class="tag">Signal Processing</span><span class="tag">Sensors</span>
+      </div>
+    </article>
+
+    <article class="project-card reveal">
+      <img class="project-image" src="bandwidth.jpg" alt="Machine Learning Based Automated Bandwidth Analysis and Estimation Using Time Series Analysis">
+      <div class="project-top">
+        <h3 class="project-title">
+          <a href="https://github.com/SabbirWitcher/ML-Based-Dynamic-Bandwidth-Allocation-for-Mobile-Data-Usage" target="_blank" style="text-decoration: none; color: inherit;">
+            Machine Learning Based Automated Bandwidth Analysis and Estimation Using Time Series Analysis
+          </a>
+        </h3>
+        <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <p class="project-desc">
+        This project aims to predict the required bandwidth for a particular place at different times of the day. The project uses Time Series Analysis to forecast the required bandwidth using different ML Models. We compare and test various models to idenfity the best model so that bandwidth can be efficiently distributed based on previous knowledge.
+      </p>
+      <div class="tags">
+        <span class="tag">ML</span><span class="tag">TensorFlow</span><span class="tag">Data Analysis</span><span class="tag">Time Series Analysis</span><span class="tag">Autoregression</span>
+      </div>
+    </article>
+
+    <article class="project-card reveal">
+      <img class="project-image" src="waste.jpg" alt="Automated Medical Waste Segregation Using Computer Vision ">
+      <div class="project-top">
+        <h3 class="project-title">
+          <a href="https://github.com/SabbirWitcher/Automated-Medical-Waste-Segregation-Using-Computer-Vision" target="_blank" style="text-decoration: none; color: inherit;">
+            Automated Medical Waste Segregation Using Computer Vision 
+          </a>
+        </h3>
+        <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <p class="project-desc">
+        The project uses Computer Vision and Deep Learning to identify medical wastes and then drops them at separate bins automatically based on its category. The model used here is Yolov8l and Yolo11n. The project incorporates Deep Learning, Computer Vision and Embedded Systems control to handle the tasks.
+      </p>
+      <div class="tags">
+        <span class="tag">Deep Learning</span><span class="tag">Computer Vision</span><span class="tag">Control System</span><span class="tag">Sensor Integration</span><span class="tag">Object Detection</span>
+      </div>
+    </article>
+
+    <article class="project-card reveal">
+      <img class="project-image" src="BLDC.jpg" alt="Regenerative Braking Using BLDC Motor Back EMF">
+      <div class="project-top">
+        <h3 class="project-title">
+          <a href="https://github.com/SabbirWitcher/Automated-Medical-Waste-Segregation-Using-Computer-Vision" target="_blank" style="text-decoration: none; color: inherit;">
+            Regenerative Braking Using BLDC Motor Back EMF 
+          </a>
+        </h3>
+        <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <p class="project-desc">
+        In this project, a regenerative braking system tailored for BLDC motors was designed and implemented with a focus on capturing and utilizing back electromotive force (EMF). Using a custom-built 555-timer PWM controller and a three-phase rectification stage, the prototype successfully demonstrates increased energy efficiency for electric vehicle applications.
+      </p>
+      <div class="tags">
+        <span class="tag">Power Electronics Design</span><span class="tag">BLDC Motor Control</span><span class="tag">Energy Storage System</span><span class="tag">MATLAB\Simulink</span><span class="tag">Hardware Prototyping</span>
+      </div>
+    </article>
+
+
+  </div>
+</div>
+
+        <div id="other" class="tab-panel" role="tabpanel">
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <img class="project-image" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" alt="Teaching demos visual">
+              <div class="project-top">
+                <h3 class="project-title">Interactive Teaching Demos</h3>
+                <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              </div>
+              <p class="project-desc">
+                Created simulation-backed educational demos for junior students to visualize core concepts in signals and control systems.
+              </p>
+              <div class="tags">
+                <span class="tag">Education</span><span class="tag">JS</span><span class="tag">Simulation</span>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <img class="project-image" src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80" alt="Design and visual assets">
+              <div class="project-top">
+                <h3 class="project-title">Scientific Visualization Assets</h3>
+                <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              </div>
+              <p class="project-desc">
+                Designed polished visual and graphical assets for research posters, publications, and academic presentations.
+              </p>
+              <div class="tags">
+                <span class="tag">Design</span><span class="tag">Illustration</span><span class="tag">Communication</span>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <img class="project-image" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Automation scripts workspace">
+              <div class="project-top">
+                <h3 class="project-title">Automation Scripts for Lab Workflows</h3>
+                <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              </div>
+              <p class="project-desc">
+                Wrote utilities to automate repetitive preprocessing, dataset validation, and report generation across multiple experiments.
+              </p>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Productivity</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Research & Academic Timeline</h2>
+        <p class="section-subtitle reveal">
+          A concise overview of education, ongoing work, and significant research milestones.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <h4>B.Sc. in Engineering — BUET</h4>
+            <small>2022 – Present</small>
+            <p>Focused coursework in computational methods, signal systems, and advanced mathematics for engineering research.</p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>Undergraduate Thesis Initiated</h4>
+            <small>2025</small>
+            <p>Started thesis on hybrid deep learning methods for noisy biosignal interpretation and classification.</p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>Conference Poster / Research Showcase</h4>
+            <small>2025</small>
+            <p>Presented preliminary findings and methodology benchmarking in departmental research colloquium.</p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h4>Current Focus</h4>
+            <small>2026</small>
+            <p>Refining model generalization, explainability, and publication-ready evaluation for final thesis submission.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="socials" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Academic & Professional Socials</h2>
+        <p class="section-subtitle reveal">
+          Connect with my educational content, visual work, and academic/professional profiles.
+        </p>
+
+        <div class="social-grid">
+          <a class="social-card reveal" href="https://www.youtube.com/@sabbirahmed4123" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+            <h4>YouTube</h4>
+            <p>Educational demos & project walkthroughs</p>
+          </a>
+
+          <a class="social-card reveal" href="https://www.artstation.com/witcher_1006" target="_blank">
+            <i class="fa-brands fa-artstation"></i>
+            <h4>ArtStation</h4>
+            <p>Visual/design and presentation assets</p>
+          </a>
+
+          <a class="social-card reveal" href="https://www.linkedin.com/in/sabbir-ahmed-witcher" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+            <h4>LinkedIn</h4>
+            <p>Professional profile and networking</p>
+          </a>
+
+          <a class="social-card reveal" href="#" target="_blank">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h4>Google Scholar</h4>
+            <p>Publications and citations</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Contact / CV</h2>
+        <p class="section-subtitle reveal">Open to research collaborations, internships, and graduate opportunities.</p>
+
+        <div class="contact-card reveal">
+          <h3 style="color:var(--deep-navy); margin-bottom:0.45rem;">Let’s Connect</h3>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> sa7882000@gmail.com</li>
+            <li><strong>Institution:</strong> BUET</li>
+          </ul>
+
+          <div class="cta-row" style="margin-top:1rem;">
+            <a class="btn btn-primary" href="cv.pdf" download>
+              <i class="fa-solid fa-file-arrow-down"></i> Download CV
+            </a>
+            <a class="btn btn-outline" href="mailto:sa782000@gmail.com">
+              <i class="fa-regular fa-envelope"></i> Email Me
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Sabbir Ahmed
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const targetId = btn.dataset.tab;
+        const targetPanel = document.getElementById(targetId);
+        targetPanel.classList.add('active');
+
+        revealOnScroll();
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.9;
+
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('load', revealOnScroll);
+    window.addEventListener('scroll', revealOnScroll);
+  </script>
+</body>
+</html>
