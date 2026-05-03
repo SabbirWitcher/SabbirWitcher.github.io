@@ -475,8 +475,17 @@
 
     .social-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      /* Forces 4 columns */
+      grid-template-columns: repeat(4, 1fr); 
       gap: 0.8rem;
+    }
+
+    /* Targets the 5th card (Google Scholar) specifically */
+    .social-card:nth-child(5) {
+      grid-column: span 4;   /* Makes it span across all 4 columns */
+      justify-self: center; /* Centers it in that row */
+      width: 100%;
+      max-width: 265px;     /* Keeps the size consistent with others */
     }
 
     .social-card {
@@ -486,6 +495,11 @@
       padding: 1rem;
       text-align: center;
       transition: 0.25s ease;
+      /* Ensure links behave as block elements for the grid */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .social-card:hover {
@@ -678,6 +692,7 @@
         <div class="tabs reveal" role="tablist" aria-label="Project tabs">
           <button class="tab-btn active" data-tab="projects" role="tab" aria-selected="true">Academic Projects</button>
           <button class="tab-btn" data-tab="other" role="tab" aria-selected="false">Self Projects and Other Works</button>
+          <button class="tab-btn" data-tab="comp" role="tab" aria-selected="false">Competitions</button>
         </div>
 
         <div id="projects" class="tab-panel active" role="tabpanel">
@@ -915,7 +930,7 @@
 
 
     <article class="project-card reveal">
-      <img class="project-image" src="esd.jpg" alt="TElectrical Services Design for a 10 Storied Building">
+      <img class="project-image" src="esd.jpg" alt="Electrical Services Design for a 10 Storied Building">
       <div class="project-top">
         <h3 class="project-title">
           <a href="https://github.com/SabbirWitcher/Electrical-Services-Design" target="_blank" style="text-decoration: none; color: inherit;">
@@ -1255,6 +1270,76 @@
         <span class="tag">Adobe After Effects</span><span class="tag">2D Design</span><span class="tag">2D Modeling</span><span class="tag">2D Animation</span><span class="tag">App Design</span><span class="tag">App Simulation</span>
     </article>
 
+  </div>
+</div>
+
+
+    <div id="comp" class="tab-panel" role="tabpanel">
+          <div class="projects-grid">
+            
+          <article class="project-card reveal">
+      <img class="project-image" src="sp.jpg" alt="IEEE SP CUP 2026">
+      <div class="project-top">
+        <h3 class="project-title">
+          <a href="https://github.com/SabbirWitcher/SP-CUP-2026" target="_blank" style="text-decoration: none; color: inherit;">
+            IEEE Signal Processing Cup 2026
+
+          </a>
+        </h3>
+        <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <p class="project-desc">
+        This project implements a high performance audio processing pipeline designed for the IEEE Signal Processing Cup 2026, targeting the extraction of a male speaker from complex mixtures with high female interference. It utilizes a hybrid architecture combining classical spatial filtering such as MVDR beamforming and Griffiths-Jim adaptive cancellation with a deep learning-based CleanUNet model for refined denoising. The system is optimized for both anechoic and reverberant environments, featuring specialized sub steps for early leakage cleanup and local artifact de-clicking to ensure superior speech clarity.
+      </p>
+      <div class="tags">
+        <span class="tag">Digital Signal Processing</span><span class="tag">Machine Learning</span><span class="tag">Spatial Audio</span><span class="tag">Speech Enhancement</span><span class="tag">MATLAB</span><span class="tag">Python</span>
+    </article>
+
+
+
+      <article class="project-card reveal">
+      <img class="project-image" src="hackathon.jpg" alt="Impact Dhaka Hackathon Smart Traffic Governance with Strategic AI Deployment">
+      <div class="project-top">
+        <h3 class="project-title">
+          <a href="https://github.com/SabbirWitcher/Smart_Traffic_Governance_with_Strategic_AI_Deployment" target="_blank" style="text-decoration: none; color: inherit;">
+            Smart Traffic Governance with Strategic AI Deployment (Impact Dhaka Hackathon 2026)
+
+          </a>
+        </h3>
+        <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <p class="project-desc">
+        This first-prize winning project from the Impact Dhaka Hackathon 2026 utilizes the COCO-SSD classifier to automate traffic governance by identifying illegally parked buses and encroaching street vendors for immediate reporting and ticketing. It further enhances urban mobility through an AI-driven emergency protocol that predicts vehicle paths and manages signal timing to clear routes, all managed via a comprehensive interactive dashboard.
+      </p>
+      <div class="tags">
+        <span class="tag">Computer Vision</span><span class="tag">Automation</span><span class="tag">Edge AI Implementation</span><span class="tag">Real Time Inference</span><span class="tag">GeoSpatial Mapping</span>
+    </article>
+
+
+
+    <article class="project-card reveal">
+      <img class="project-image" src="biz.jpg" alt="HULT Project">
+      <div class="project-top">
+        <h3 class="project-title">
+          <a href="https://youtu.be/9v2Q_gPAMhQ?si=K9KCg-fgH6eFctNB" target="_blank" style="text-decoration: none; color: inherit;">
+            BIZTARTER App Design and Animation
+          </a>
+        </h3>
+        <a class="github-link" href="#" target="_blank" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <p class="project-desc">
+        This project uses Adobe After Effects to simulate the designing and animation of an app built for the HULT Competition 2022 and this was selected as the 1st Runners Up for the local stage of the competition.
+      </p>
+      <div class="tags">
+        <span class="tag">Adobe After Effects</span><span class="tag">2D Design</span><span class="tag">2D Modeling</span><span class="tag">2D Animation</span><span class="tag">App Design</span><span class="tag">App Simulation</span>
+    </article>
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -1315,10 +1400,15 @@
             <p>Visual/design and presentation assets</p>
           </a>
 
-          <a class="social-card reveal" href="https://www.linkedin.com/in/sabbir-ahmed-witcher" target="_blank">
+          <a class="social-card reveal" href="https://www.linkedin.com/in/sabbirahmed165" target="_blank">
             <i class="fa-brands fa-linkedin"></i>
             <h4>LinkedIn</h4>
             <p>Professional profile and networking</p>
+          </a>
+          <a class="social-card reveal" href="https://github.com/SabbirWitcher" target="_blank">
+            <i class="fa-brands fa-github"></i>
+            <h4>GitHub</h4>
+            <p>Project Repository</p>
           </a>
 
           <a class="social-card reveal" href="#" target="_blank">
