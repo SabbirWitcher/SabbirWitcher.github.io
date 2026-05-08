@@ -525,6 +525,70 @@
       color: var(--muted);
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      aspect-ratio: 1;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 27, 42, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay-text {
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .gallery-overlay-text h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .gallery-overlay-text p {
+      font-size: 0.9rem;
+      color: #dbeafe;
+    }
+
     .contact-card {
       background: #fff;
       border: 1px solid var(--line);
@@ -547,6 +611,83 @@
       color: var(--muted);
       text-align: center;
       font-size: 0.88rem;
+    }
+
+    .publication-card {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .publication-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .publication-title {
+      font-size: 1.05rem;
+      color: var(--deep-navy);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .publication-abstract {
+      color: var(--slate);
+      font-size: 0.95rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .publication-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .publication-doi {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+
+    .publication-doi a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .publication-doi a:hover {
+      text-decoration: underline;
+      color: #1d4ed8;
+    }
+
+    .publication-info {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--slate);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .publication-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .publication-info-item strong {
+      color: var(--deep-navy);
+      font-weight: 600;
     }
 
     .reveal {
@@ -612,7 +753,8 @@
         <ul>
           <li><a href="#about" class="nav-link active">About</a></li>
           <li><a href="#work" class="nav-link">Projects</a></li>
-          <li><a href="#research" class="nav-link">Research</a></li>
+          <li><a href="#publications" class="nav-link">Publications</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#socials" class="nav-link">Socials</a></li>
           <li><a href="#contact" class="nav-link">Contact/CV</a></li>
           <li><a class="nav-cv-btn" href="cv.pdf" download><i class="fa-solid fa-file-arrow-down"></i> CV</a></li>
@@ -649,6 +791,9 @@
             </a>
             <a class="btn btn-outline" href="#work">
               <i class="fa-solid fa-diagram-project"></i> View Projects
+            </a>
+            <a class="btn btn-outline" href="#publications">
+              <i class="fa-solid fa-book"></i> View Publications
             </a>
           </div>
         </article>
@@ -1345,38 +1490,36 @@
       </div>
     </section>
 
-    <section id="research" class="section">
+    <section id="publications" class="section">
       <div class="container">
-        <h2 class="section-title reveal">Research & Academic Timeline</h2>
+        <h2 class="section-title reveal">Publications</h2>
         <p class="section-subtitle reveal">
-          A concise overview of education, ongoing work, and significant research milestones.
+          A collection of peer-reviewed research and published works.
         </p>
 
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <h4>B.Sc. in Engineering — BUET</h4>
-            <small>2022 – Present</small>
-            <p>Focused coursework in computational methods, signal systems, and advanced mathematics for engineering research.</p>
+        <div class="publication-card reveal">
+          <h3 class="publication-title">Machine Learning and IoT Based Automated Remote Health Monitoring and Alert System</h3>
+          <div class="publication-info">
+            <div class="publication-info-item">
+              <strong>Publication Date:</strong> 7 May 2026
+            </div>
+            <div class="publication-info-item">
+              <strong>Conference:</strong> IEEE RAAICON 2025
+            </div>
+            <div class="publication-info-item">
+              <strong>Publisher:</strong> IEEE
+            </div>
           </div>
-
-          <div class="timeline-item reveal">
-            <h4>Undergraduate Thesis Initiated</h4>
-            <small>2025</small>
-            <p>Started thesis on hybrid deep learning methods for noisy biosignal interpretation and classification.</p>
-          </div>
-
-          <div class="timeline-item reveal">
-            <h4>Conference Poster / Research Showcase</h4>
-            <small>2025</small>
-            <p>Presented preliminary findings and methodology benchmarking in departmental research colloquium.</p>
-          </div>
-
-          <div class="timeline-item reveal">
-            <h4>Current Focus</h4>
-            <small>2026</small>
-            <p>Refining model generalization, explainability, and publication-ready evaluation for final thesis submission.</p>
+          <p class="publication-abstract">
+            This paper presents the design and implementation of a low-cost, portable, Machine Learning and IoT-based remote patient health monitoring system integrated with an emergency alert mechanism. The system continuously monitors critical health parameters including heart rate, blood oxygen saturation (SpO₂), body temperature, and ECG signals, while also incorporating fall detection and toxic gas monitoring for enhanced patient safety. An intelligent diagnostic framework was developed using a 1D CNN model in Google Colab to automatically analyze ECG data and detect abnormalities, achieving an accuracy of approximately 94.23%. Powered by an ESP32 microcontroller and multiple biomedical sensors, the system enables real-time monitoring through onboard OLED and TFT displays as well as a mobile application dashboard. In emergency situations, instant alerts are transmitted to caregivers via a Telegram bot for rapid response. Experimental evaluations demonstrated an overall measurement accuracy of nearly 97%, while maintaining a highly cost-effective design with a total implementation cost of only $25.45 USD, making it a practical alternative to many commercially available smart health monitoring devices.
+          <div class="publication-meta">
+            <div class="publication-doi">
+              <strong>DOI:</strong> <a href="https://doi.org/10.1109/RAAICON69033.2025.11502033" target="_blank">https://doi.org/10.1109/RAAICON69033.2025.11502033</a>
+            </div>
           </div>
         </div>
+
+        
       </div>
     </section>
 
@@ -1416,6 +1559,77 @@
             <h4>Google Scholar</h4>
             <p>Publications and citations</p>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Photo Gallery</h2>
+        <p class="section-subtitle reveal">
+          Professional moments from research, events, and academic milestones.
+        </p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img src="raaicon.jpg" alt="Presenting my paper at IEEE RAAICON 2025">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-text">
+                <h4>Presenting at IEEE RAAICON 2025</h4>
+                <p>Sharing research findings with the academic community.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img src="hackathonprize.png" alt="Professional photo 2">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-text">
+                <h4>Impact Dhaka Hackathon 2026 Champion</h4>
+                <p>Recognition for innovative solution</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="gallery-item reveal">
+            <img src="industrialattachment.jpg" alt="Professional photo 6">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-text">
+                <h4>Completion of Industrial Attachment at Fiber @ Home Ltd.</h4>
+                <p>Recieving the certificate for completion of the industrial attachment.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img src="micropresentation.jpg" alt="Professional photo 3">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-text">
+                <h4>Microprocessor and Embedded Systems Project Presentation</h4>
+                <p>Demonstrating the implementation of an IoT based remote health monitoring system</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img src="power_work1.jpg" alt="Professional photo 4">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-text">
+                <h4>Implementing the Three Phase Generator Project</h4>
+                <p>Cutting the previous windings in a motor to rewind it again for the generator based on our calculation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item reveal">
+            <img src="preparation.jpg" alt="Professional photo 5">
+            <div class="gallery-overlay">
+              <div class="gallery-overlay-text">
+                <h4>Power Systems Project</h4>
+                <p>Preparing for the presentation of Hybrid Solar Wind Power Generation project.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
