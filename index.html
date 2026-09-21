@@ -758,6 +758,18 @@
       font-weight: 700;
       margin-bottom: 0.6rem;
     }
+    .education-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+    }
+
+    .education-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+    }
 
     .publication-abstract {
       color: var(--slate);
@@ -1037,6 +1049,7 @@
       <nav>
         <ul>
           <li><a href="#about" class="nav-link active">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
           <li><a href="#work" class="nav-link">Projects</a></li>
           <li><a href="#publications" class="nav-link">Publications</a></li>
           <li><a href="#gallery" class="nav-link">Gallery</a></li>
@@ -1065,8 +1078,8 @@
         <article class="hero-card reveal">
           <p class="hero-kicker">Academic Portfolio</p>
           <h1 class="hero-name">Hi, I’m Sabbir Ahmed</h1>
-          <p class="hero-bio">
-            An Electrical and Electronic Engineering graduate from Bangladesh University of Engineering and Technology, I am dedicated to addressing complex, real-world challenges through the integration of Artificial Intelligence, Deep Learning, and Advanced Simulation. My research and project work focus on bridging the gap between academic theory and practical implementation, specifically within the realms of AI and ML, Data Science, Robotics, Automation, and the Internet of Things (IoT). By leveraging data-driven modeling and modern software architectures, I specialize in engineering intelligent, signal-driven systems designed to optimize performance and solve intricate scientific problems.
+          <p class="hero-bio" align="justify">
+            An Electrical and Electronic Engineering graduate from Bangladesh University of Engineering and Technology, currently working at Huawei Digital Power, I am dedicated to addressing complex, real-world challenges through the integration of Artificial Intelligence, Deep Learning, and Advanced Simulation. My research and project work focus on bridging the gap between academic theory and practical implementation, specifically within the realms of AI and ML, Data Science, Robotics, Automation, and the Internet of Things (IoT). By leveraging data-driven modeling and modern software architectures, I specialize in engineering intelligent, signal-driven systems designed to optimize performance and solve intricate scientific problems.
           </p>
 
           <h3 class="section-title" style="font-size:1.15rem; margin-bottom:0.3rem;">Research Focus</h3>
@@ -1098,6 +1111,8 @@
           <div class="profile-card reveal">
             <div class="avatar"><img src="profile.jpg"></div>
             <h3 style="color:var(--deep-navy); margin-bottom:0.2rem; text-align:center;">Sabbir Ahmed</h3>
+            <p class="meta" style="text-align:center;">Solution Engineer<br>South Asia Digital Power Business<br>Huawei Technologies Co. Ltd.</p>
+            <p class="meta" style="text-align:center;">&middot;&middot;&middot;</p>
             <p class="meta" style="text-align:center;">B.Sc in Electrical and Electronic Engineering<br>Bangladesh University of Engineering and Technology (BUET)</p>
             <p class="meta" style="text-align:center;">Dept. of Electrical and Electronic Engineering</p>
           </div>
@@ -1120,6 +1135,60 @@
             </div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title reveal">Education</h2>
+        <p class="section-subtitle reveal">
+          Academic background and qualifications.
+        </p>
+
+        <div class="publication-card reveal">
+          <h3 class="publication-title education-title">
+            <img src="BUET_LOGO.png" alt="BUET Logo" class="education-logo">
+              Bangladesh University of Engineering and Technology
+          </h3>
+          <div class="publication-info">
+            <div class="publication-info-item">
+              <strong>Degree:</strong> Bachelor of Science in Electrical and Electronic Engineering
+            </div>
+            <div class="publication-info-item">
+              <strong>Result:</strong> CGPA 3.57/4.00
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-card reveal">
+          <h3 class="publication-title education-title">
+            <img src="Notre_Dame_College,_Dhaka_Monogram.png" alt="NDC Logo" class="education-logo">
+              Notre Dame College
+          </h3>
+          <div class="publication-info">
+            <div class="publication-info-item">
+              <strong>Exam:</strong> Higher Secondary Certificate (HSC)
+            </div>
+            <div class="publication-info-item">
+              <strong>Result:</strong> GPA 5.00/5.00
+            </div>
+          </div>
+        </div>
+
+        <div class="publication-card reveal">
+          <h3 class="publication-title education-title">
+            <img src="ISC Logo.png" alt="Ideal School Logo" class="education-logo">
+              Ideal School and College
+          </h3>
+          <div class="publication-info">
+            <div class="publication-info-item">
+              <strong>Exam:</strong> Secondary School Certificate (SSC)
+            </div>
+            <div class="publication-info-item">
+              <strong>Result:</strong> GPA 5.00/5.00
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1814,6 +1883,42 @@
             </div>
           </div>
         </div>
+
+
+
+        <div class="publication-card reveal">
+          <h3 class="publication-title">Beyond Accuracy: An Empirical Risk Assessment of Shortcut and Segmentation Dependence in Chest X-Ray Classification</h3>
+          <div class="publication-info">
+            <div class="publication-info-item">
+              <strong>Publication Date:</strong> Yet to be published. (Presented on 4th September 2026)
+            </div>
+            <div class="publication-info-item">
+              <strong>Conference:</strong> IEEE BECITHCON 2026
+            </div>
+            <div class="publication-info-item">
+              <strong>Publisher:</strong> IEEE
+            </div>
+          </div>
+          <p class="publication-abstract">
+            This paper presents an empirical risk assessment framework designed to evaluate shortcut learning and lung-mask segmentation sensitivity in deep learning-based chest X-ray (CXR) classification. Using a cleaned dataset of 20,791 group-disjoint radiographs across four classes from the COVID-19 Radiography Database, the study revealed substantial dataset shortcut cues. A DenseNet121 model trained exclusively on non-pulmonary background pixels attained a 65.07% macro-F1 score, while simple non-anatomical image descriptors reached 74.19% macro-F1. To mitigate vulnerability to minor segmentation boundary shifts (erosion, dilation, and translation), the study introduced a mask-consistency regularized multi-scale attention model (MaskCC-MSA). Experimental evaluations showed that MaskCC achieved strong diagnostic performance (82.03% macro-F1) comparable to the unregularized multi-scale attention baseline (82.55% macro-F1), while cutting mask-induced prediction divergence by 66.8% and class flips by 48.6% in a controlled balanced audit. Multi-seed full-test evaluations further confirmed an average reduction in prediction divergence of 73.22&plusmn7.93%, establishing targeted mask-consistency training as an effective method to improve model stability without requiring lung masks at test inference.  
+          <div class="publication-meta">
+            <div class="publication-doi">
+              <strong>DOI:</strong> <a href="" target="_blank">Yet to be published</a>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
         
       </div>
